@@ -1,0 +1,69 @@
+{block content}
+    
+    <div class="container">
+    
+        <div class="row"> <h1 n:block="tittle">GYSCOMEDOR</h1> </div>
+        
+        <div class="row">
+            
+            <div class="col col-lg-6"> <h2>Historico de {$historico->usuario}</h2> </div>
+        
+        </div>
+        
+        <div class="row">
+            
+            <div class="col col-lg-12">
+                
+                <table class="table">
+                    
+                    <thead class="thead-dark">
+                    
+                        <tr>
+
+                            <th> Usuario </th>
+                        
+                            <th>Fecha</th>
+                        
+                            <th>Empresa</th>
+                        
+                            <th>Operario</th>
+                        
+                            <th>Problema de Averia</th>
+                        
+                            <th>Solucion de Averia</th>
+            
+                        </tr>
+                    
+                    </thead>
+                    
+                    <tbody>
+                     
+                     {foreach $usuarios as $usuario}
+                        
+                        <tr>
+                               
+                            <td> {$usuario->usuario} </td>
+                                
+                            <td> {$usuario->fecha} </td>
+
+                            <td> {$usuario->empresa} </td>
+
+                            <td> {$usuario->operario} </td>
+
+                            <td> {$usuario->problemaAveria} </td>
+
+                            <td> {$usuario->solucionAveria} </td>
+                        
+                        </tr>
+                   
+                    </tbody>
+                
+                </table>
+            
+            </div>
+        
+        </div>
+
+    </div>
+
+{/block}

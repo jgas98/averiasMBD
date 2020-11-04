@@ -1,0 +1,60 @@
+{block content}
+    <div class="container">
+        <div class="row">
+            <h1 n:block="tittle">GYSCOMEDOR</h1>
+        </div>
+        <div class="row">
+            <div class="col col-lg-6">
+                <h2>Clases</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-lg-12">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Tutor
+                        </th>
+                        <th>
+
+                        </th>
+                        <th>
+                            Nombre de la clase
+                        </th>
+                        <th>
+                            Opciones
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach $clases as $clase}
+                    <tr>
+                        <td>
+                            {$clase->id}
+                        </td>
+                        <td>
+                            {$clase->tutornombre}
+                        </td>
+                        <td>
+                            {$clase->tutorapellidos}
+                        </td>
+                        <td>
+                            {$clase->nombreclase}
+                        </td>
+                        <td>
+                            <a n:href="Alumnos:default claseID => $clase->id" class="btn btn-xs btn-success">Listado de Alumnos</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+{/block}

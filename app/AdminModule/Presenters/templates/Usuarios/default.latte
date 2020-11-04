@@ -1,0 +1,126 @@
+{block content}
+    
+    <div class="container">
+    
+        <div class="row">
+    
+            <h1 n:block="title">USUARIOS</h1>
+    
+        </div>
+    
+        <div class="row">
+    
+            <div class="col col-lg-6">
+    
+                <h2>USUARIOS</h2>
+    
+            </div>
+    
+            <div class="col col-lg-6">
+    
+                <a n:href="Usuarios:add" class="btn btn-xs btn-success">Añadir Usuario</a>
+    
+            </div>
+    
+        </div>
+    
+        <div class="row">
+    
+            <div class="col col-lg-12">
+    
+                <table class="table">
+    
+                    <thead class="thead-dark">
+    
+                    <tr>
+    
+                        <th>ID</th>
+                        
+                        <th>Nombre</th>
+                        
+                        <th>Correo</th>
+                        
+                        <th>Contraseña Encriptada</th>
+                        
+                        <th>Rol</th>
+                        
+                        <th>Telefono</th> 
+                       
+                    </tr>
+                    
+                    </thead>
+                    
+                    <tbody>
+                    
+                    {foreach $usuarios as $usuario}
+                    
+                        {if $usuario->rol == 'admin'}
+                    
+                            {else}
+                    
+                        <tr>
+                    
+                            <td> {$usuario->id} </td>
+                    
+                            <td> {$usuario->nombre} </td>
+
+                            <td> {$usuario->correo} </td>
+
+                            <td> {$usuario->password} </td>
+                            
+                            <td> {$usuario->rol} </td>
+
+                            <td> {$usuario->telefono} </td>
+                    
+                            <!--{ifset $usuario->alumno}
+                    
+                                <td>
+                    
+                                    {$usuario->alumno->nombrealumno} {$usuario->alumno->primerapellidoalumno} {$usuario->alumno->segundoapellidoalumno}
+                    
+                                </td>
+
+                                <td>
+                                    {$usuario->correo}
+                                </td>
+                                <td>
+                                    {$usuario->alumno->claseid->nombreclase}
+                                </td>
+                            {else}
+                                <td>{$usuario->nombre}</td>
+                                <td>{$usuario->correo}</td>
+                                <td></td>
+                            {/ifset}
+
+                            {ifset $usuario->centro}
+                                <td>
+                                    {$usuario->centro->nombre}
+                                </td>
+                            {else}
+                                <td> -</td>
+                            {/ifset}-->
+                            
+                            <td>
+                            
+                                <a n:href="Usuarios:editar $usuario->id" class="btn btn-xs btn-primary ">Editar</a>
+                            
+                                <a n:href="Usuarios:borrarUsuario $usuario->id" class="btn btn-xs btn-danger del">Borrar</a>
+                            
+                            </td>
+                        
+                        </tr>
+                    {/if}
+                    
+                {/foreach}
+            
+            </tbody>
+        
+        </table>
+    
+    </div>
+
+</div>
+
+</div>
+
+{/block}

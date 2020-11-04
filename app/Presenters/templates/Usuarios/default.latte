@@ -1,0 +1,67 @@
+{block content}
+    <div class="container">
+        <div class="row">
+            <h1 n:block="title">GYSCOMEDOR</h1>
+        </div>
+        <div class="row">
+            <div class="col col-lg-6">
+                <h2>VER PERFIL DE USUARIO CON OPCION DE MODIFICAR DATOS COMO CORREO, TELEFONO O NOMBRE</h2>
+            </div>
+            <!--<div class="col col-lg-6">
+                <a n:href="Usuario:add" class="btn btn-xs btn-success"> Añadir Usuario </a>
+            </div>-->
+        </div>
+        <div class="row">
+            <div class="col col-lg-12">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Correo
+                        </th>
+                        <th>
+                            Contraseña encriptada
+                        </th>
+                        <th>
+                            Rol
+                        </th>
+                        <th>
+                            Telefono
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {foreach $centros as $centro}
+                    <tr>
+                        <td>
+                            {$centro->id}
+                        </td>
+                        <td>
+                            {$centro->nombre}
+                        </td>
+                        <td>
+                            {$centro->direccion}
+                        </td>
+                        <td>
+                            {$centro->correo}
+                        </td>
+                        <td>
+                            <a n:href="Clases:default centroID => $centro->id" class="btn btn-xs btn-success">Clases</a>
+                            <a n:href="Centros:editar $centro->id" class="btn btn-xs
+                            btn-primary">Editar</a>
+                            <a n:href="Centros:borrarCentro $centro->id" class="btn btn-xs btn-danger
+                            del">Borrar</a>
+                        </td>
+                    </tr>
+                    {/foreach}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+{/block}

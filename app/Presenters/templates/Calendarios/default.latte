@@ -1,0 +1,38 @@
+{block content}
+    <div class="container">
+        <div class="row">
+            <h1 n:block="tittle">GYSCOMEDOR</h1>
+        </div>
+        <div class="row">
+            <div class="col col-lg-6">
+
+            </div>
+        </div>
+        {ifset $calendario}
+        <div class="row">
+            <div class="col col-lg-12  table-responsive">
+                <img src="{$calendario->imagen}" alt="">
+            </div>
+        </div>
+            {if $usuarioDb->rol == "director"}
+                <div class="row">
+                    <div class="col col-lg-4">
+                        <h4>Borrar calendario actual</h4>
+                        <a n:href="Calendarios:borrarCalendario" class="btn btn-xs btn-danger del">Borrar calendario</a>
+                    </div>
+                </div>
+            {/if}
+        {else}
+            <div class="row">
+                <div class="col col-lg-12  table-responsive">
+                    <h4>No existe un calendario para este mes en la base de datos, agrega uno.</h4>
+                    <br>
+                    {control addCalendarForm}
+                </div>
+            </div>
+
+        {/ifset}
+
+    </div>
+
+{/block}

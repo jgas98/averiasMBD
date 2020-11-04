@@ -1,0 +1,138 @@
+{block content}
+    <div class="container">
+        <div class="row">
+            <h1 n:block="tittle">GESTION DE AVERIAS</h1>
+        </div>
+        <div class="row">
+            <div class="col col-lg-6">
+                {ifset $alumnos}
+                <h2>Averias</h2>
+                {else}
+                <h2>Todos las averias</h2>
+                {/ifset}
+            </div>
+
+                {ifset $clasex->id}
+            <div class="col col-lg-3">
+                    <a n:href="Alumnos:add idClase => $clasex->id" class="btn btn-xs btn-success">Añadir Alumno</a>
+            </div>
+            <div class="col col-lg-3">
+                    {control importarAlumnosForm}
+            </div>
+                {/ifset}
+
+        </div>
+        <div class="row">
+            <div class="col col-lg-12">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        {if $rol == "admin"}
+                            <th>
+                                ID
+                            </th>
+                        {/if}
+                        <th>
+
+                        </th>
+                        <th>
+                            Nombre
+                        </th>
+                        {ifset $alumnos}
+                        {else}
+                            <th>
+                                Clase
+                            </th>
+                        {/ifset}
+                        <th>
+                            Alergias
+                        </th>
+
+                        <th>
+                            Opciones
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {ifset $alumnos}
+                        {foreach $alumnos as $alumno}
+                        <tr>
+                            {if $rol == "admin"}
+                                <td>
+                                    {$alumno->id}
+                                </td>
+                            {/if}
+                            <td>
+                                {if $alumno->imagen == "null"}
+                                    <img src="/images/defaultprofile.jpg" alt="Default profile" class="img-fluid rounded">
+                                {else}
+                                    <img src="{$alumno->imagen}" alt="" class="img-fluid rounded">
+                                {/if}
+                            </td>
+                            <td>
+                                {$alumno->nombrealumno} {$alumno->primerapellidoalumno} {$alumno->segundoapellidoalumno}
+                            </td>
+
+                            <td>
+                                {foreach App\Model\Orm\Alumno::getAlergiasList() as $alergia => $nombrealergia}
+                                    <span n:if="$alumno->$alergia===true">
+                                                    {$nombrealergia}
+                                                </span>
+                                {/foreach}
+                            </td>
+                            <td>
+                                <a n:href="Alumnos:editar $alumno->claseid->id, $alumno->id" class="btn btn-xs btn-primary">Editar</a>
+                                <a n:href="Comedor:historicoalumno $alumno->id" class="btn btn-xs btn-primary">Historico</a>
+                                {if $rol == "admin"}
+                                    <a n:href="Alumnos:borrarAlumno $alumno->claseid->id, $alumno->id" class="btn btn-xs btn-danger del">Borrar</a>
+                                {/if}
+                            </td>
+                        </tr>
+                        {/foreach}
+                    {else}
+                        {foreach $todosLosCentros as $centro}
+                            {foreach $centro->clases as $clase}
+                                {foreach $clase->alumnos as $alumno}
+                                    <tr>
+                                    {if $rol == "admin"}
+                                        <td>
+                                            {$alumno->id}
+                                        </td>
+                                    {/if}
+                                        <td>
+                                            <img src="\images\defaultprofile.jpg" alt="Default profile" class="img-fluid rounded">
+                                        </td>
+                                        <td>
+                                            {$alumno->nombrealumno} {$alumno->primerapellidoalumno} {$alumno->segundoapellidoalumno}
+                                        </td>
+                                        <td>
+                                            {$clase->nombreclase}
+                                        </td>
+
+                                        <td>
+                                            {foreach App\Model\Orm\Alumno::getAlergiasList() as $alergia => $nombrealergia}
+                                                <span n:if="$alumno->$alergia===true">
+                                                    {$nombrealergia}
+                                                </span>
+                                            {/foreach}
+                                        </td>
+                                        <td>
+                                            <a n:href="Alumnos:editar $alumno->claseid->id, $alumno->id" class="btn btn-xs
+                                btn-primary">Editar</a>
+                                    {if $rol == "admin"}
+                                            <a n:href="Alumnos:borrarAlumno $alumno->claseid->id, $alumno->id" class="btn btn-xs btn-danger del">Borrar</a>
+                                    {/if}
+                                        </td>
+                                    </tr>
+                                {/foreach}
+                            {/foreach}
+                        {/foreach}
+                    {/ifset}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+{/block}

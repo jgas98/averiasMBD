@@ -1,0 +1,68 @@
+{block content}
+    <div class="container">
+        <div class="row">
+            <h1 n:block="tittle">GYSCOMEDOR</h1>
+        </div>
+        <div class="row">
+            <div class="col col-lg-6">
+                <h3>Software web de administración de comedores</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-lg-12">
+                <p>Bienvenido {$activeUser->nombre}, te encuentras en el apartado de usuario, aquí podrás encontrar las
+                    herramientas necesarias para su uso por parte de los usuarios base como profesores o cuidadores del c
+                    omedor. Si tienes privilegios puedes acceder al apartado de <a n:href="Admin:Homepage:default">Administración</a></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-lg-12">
+                <p>
+                    Puedes leer más sobre la última actualización realizada el Miercoles 15 de Julio de 2020.
+                </p>
+                <p>
+                    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                        Leer más
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <ul>
+                        <li>
+                            Añadidos los comentarios rápidos en Comedor sobre la alimentación del alumno.
+                        </li>
+                        <li>
+                            Añadido un histórico diario y también un histórico individual de cada alumno pudiendo consultar los comentarios.
+                        </li>
+                        <li>
+                            Mejorada la experiencia de la configuración de alergias y días de comedor de cada alumno.
+                        </li>
+                        <li>
+                            Añadida la posibilidad de que cada centro configure su logo para aparecer en lugar de HOME.
+                        </li>
+                        <li>
+                            Añadida la posibilidad de añadir foto al perfil del alumno.
+                        </li>
+                        <li>
+                            Modificado el funcionamiento del calendario, actualmente funciona mediante una imagen que pueden subir unicamente
+                            los usuarios con rol de dirección o superior.
+                        </li>
+                        <li>
+                            Readaptación de la interfaz de usuario en dispositivos móviles.
+                        </li>
+                        <li>
+                            Aumento de rendimiento con la mejora del codigo y de la base de datos.
+                        </li>
+                        <li>
+                            Correción de errores menores.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{/block}

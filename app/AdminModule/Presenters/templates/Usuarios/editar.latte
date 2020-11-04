@@ -1,0 +1,64 @@
+{block content}
+    <div class="container">
+        <div class="row">
+            <h1 n:block="tittle">EDITAR USUARIO</h1>
+        </div>
+        <div class="row">
+            <div class="col col-lg-6">
+                <h2>Editar Usuario</h2>
+            </div>
+            <div class="col col-lg-6">
+                <a n:href="Usuarios:default" class="btn btn-info">Volver</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-lg-6">
+                {control editarUsuarioForm}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-lg-12">
+                {ifset $usuario->usuario}
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                Nombre
+                            </th>
+                            <th>
+                                Correo
+                            </th>
+                            <th>
+                                Telefono
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        
+                        <tr>
+                            <td>
+                                {$usuario->usuario->id}
+                            </td>
+                            <td>
+                                {$usuario->usuario->correo}
+                            </td>
+                            <td>
+                                {$usuario->usuario->telefono}
+                            </td>
+                            
+                          
+                        
+                        </tr>
+                    
+                    </tbody>
+                
+                </table>
+                {/ifset}
+            </div>
+        </div>
+
+
+    </div>
+{/block}
